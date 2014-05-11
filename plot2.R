@@ -1,0 +1,6 @@
+power <- read.csv("household_power_consumption.csv", sep=";", na.strings="?")
+power <- subset(power, Date == "1/2/2007" | Date == "2/2/2007")
+dt <- strptime(paste(power$Date, power$Time), format="%d/%m/%Y %H:%M:%S")
+png(filename="plot2.png")
+plot(x=dt, y=power[,"Global_active_power"], type="l",ylab="Global Active Power (kilowatts)", main="", xlab="")
+dev.off()
